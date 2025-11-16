@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import abc
-from typing import List
+from typing import List, cast
 
 from veloxdf.ast import FilterNode, Node, PlanNode, ProjectNode
 from veloxdf.plan_rebuilder import PlanNodeRebuilder
@@ -87,6 +87,6 @@ class Optimizer:
         print("--- Starting Optimization ---")
         for rule in self.rules:
             print(f"Applying rule: {rule.__class__.__name__}")
-            optimized_plan = rule.visit(optimized_plan)
+            optimized_plan = cast(PlanNode, rule.visit(optimized_plan))
         print("--- Optimization Finished ---")
         return optimized_plan

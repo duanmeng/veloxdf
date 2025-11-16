@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from typing import Union
+
 from sqlglot import exp, parse_one
 
 from veloxdf.ast import Alias, BinaryOp, Column, Expression, FunctionCall, Literal
@@ -41,7 +43,7 @@ class ExpressionParser:
         sqlglot_ast = parse_one(sql_string, read="presto")
         return self._transform(sqlglot_ast)
 
-    def _transform(self, node: exp.Expression) -> Expression:
+    def _transform(self, node: Union[exp.Expression, str]) -> Expression:
         """
         Recursively transforms a sqlglot AST node into our custom Expression AST node.
         """

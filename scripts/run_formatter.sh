@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# format.sh
-#
 # This script formats the Python code in the project directory using
 # the standard 'isort' and 'black' tools.
 #
@@ -16,5 +14,8 @@ poetry run isort .
 
 echo "Running black for code formatting..."
 poetry run black .
+
+echo "Running Static Analysis..."
+poetry run mypy .
 
 echo "--- Formatting complete! ---"

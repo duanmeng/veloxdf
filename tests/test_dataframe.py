@@ -35,18 +35,14 @@ def test_optimizer_filter_pushdown():
     plan = df_after._builder.get_plan_node()
 
     # 3. Check that the optimized plan structure is Project -> Filter
-    assert (
-        isinstance(plan, ProjectNode),
-        "The root of the optimized plan should be a ProjectNode",
-    )
-    assert (
-        isinstance(plan.child, FilterNode),
-        "The child of the ProjectNode should be a FilterNode",
-    )
-    assert (
-        isinstance(plan.child.child, DataSourceNode),
-        "The child of the FilterNode should be a DataSourceNode",
-    )
+    assert isinstance(plan, ProjectNode), "The root of the optimized plan should be a ProjectNode"
+
+    assert isinstance(plan.child, FilterNode), "The child of the ProjectNode should be a FilterNode"
+
+    assert isinstance(
+        plan.child.child, DataSourceNode
+    ), "The child of the FilterNode should be a DataSourceNode"
+
     assert plan.child.child.name == "my_table"
 
 
