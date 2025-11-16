@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "veloxdf"
+version = "0.1.0"
+description = "A project demonstrating sqlglot with Python 3.7 compatibility."
+authors = ["duanmeng"]
+readme = "README.md"
+packages = [{include = "veloxdf"}] # 明确告诉 poetry 我们的包在哪里
+
+# 核心依赖：将 sqlglot 限制在已知的、兼容 3.7 的 20.x 版本系列
+# 开发依赖：将 pytest 限制在已知的、兼容 3.7 的 7.x 版本系列
+[tool.poetry.dependencies]
+# 核心依赖：
+python = "~3.7"
+sqlglot = "~20.0"
+
+[tool.poetry.group.dev.dependencies]
+# 开发依赖：
+pytest = "^7.0"
+mypy = "^0.990"
+black = "^22.0"
+isort = "^5.11"
+
+[build-system]
+# 构建系统：
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py37']
