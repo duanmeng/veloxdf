@@ -27,7 +27,7 @@ The latest versions of Poetry are not compatible with Python 3.7. We must instal
 **Run the following command in your terminal:**
 
 ```bash
-curl -sSL https://install.python-poetry.org | python3.7 - -- --version 1.5.1
+curl -sSL https://install.python-poetry.org | python3.7 - --version 1.5.1
 git clone git@github.com:duanmeng/veloxdf.git
 cd veloxdf
 poetry install
